@@ -1,0 +1,34 @@
+body {
+    background-color: #fffaf0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.header{
+    background: linear-gradient(90deg, #c40000, #ffcc00);
+}
+.navbar{
+    background: linear-gradient(90deg, #c40000, #ffcc00);
+}
+
+footer, .offcanvas{
+    background: linear-gradient(90deg, #ffcc00, #0057b8);
+}
+
+.offcanvas-sidebar-cards{
+    background-color: #fffaf0;
+}
+
+.btncomenzar, .btn-sidebar, .btn-card{
+    background-color: #ecce6a;
+    color:black;
+}
+
+#crear-button, #ver-button, #btnAgregar, #btnGenerarSorteo{
+    background-color: #ecce6a;
+    color:black;
+}
+
+#iniciar-button, .btn-sortear{
+    background-color: rgb(37, 150, 37);
+}
