@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/Styles/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aquí va el nombre del usuario que inicio sesion</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="#" class="nav-link active">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active">Mis Sorteos</a></li>
+                    
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <section class="Participantes py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="participantes">
+                        <div class="participantes-body ">
+                            <h5 class="participantes-title ">Participantes</h5>
+                            <div class="participantes-lista card p-5 position-relative" id="participantes-lista">
+                                <div class="position-absolute top-0 end-0 m-2"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#sidebarCondiguracion"
+                                    style="cursor:pointer; font-size:1.3rem;">
+                                    
+                                    <i class="bi bi-gear-fill text-dark"></i>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center bg-light rounded-3 p-3 mb-2 shadow-sm" draggable="true">
+                                    <span><strong>Organizador</strong></span>
+                                    <div>
+                                        <button class="btn btn-sm btn-light me-1">...</button><!-- Este boton despliega un canvas 
+                                                                                                    individual de cada participante 
+                                                                                                    en el que puedes arrastrar nombres para 
+                                                                                                    indicar que esos seran las excepciones -->
+                                        <button class="btn btn-sm btn-eliminar">x</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-3">
+                                    <input type="text" id="input-nombre"class="form-control me-2" placeholder="Nombre del participante">
+                                    <button class="btn" id="btnAgregar">+</button>
+
+                                </div>
+                                <div class="d-flex mt-3 ">
+                                    <button class="btn w-100" id="btnGenerarSorteo">Generar</button>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <canvas class="exepciones" id="excepciones">
+                            <!-- Aqui se podrán arrastrar los usuarios que serán las excepciones -->
+                             <!-- Encargate de hacer que este canva no sea visible hasta que se presionan los 3 puntitos de alguno de los participantes -->
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarCondiguracion">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Configuracion</h5>
+            <button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+
+        </div>
+        <div class="offcanvas-body offcanvas-sidebar-cards">
+            <div class="card p-3 shadow-sm">
+                <h6 class="mb-3">Selecciona un Evento</h6>
+                <ul class="list-group mb-3" id="lista-eventos">
+                    <li class="list-group-item list-group-item-action">San Valentín</li>
+                    <li class="list-group-item list-group-item-action">Navidad</li>
+                    <li class="list-group-item list-group-item-action">Año Nuevo</li>
+                </ul>
+
+                <div class="d-flex">
+                    <input type="text" id="nuevo-evento" class="form-control me-2" placeholder="Agregar nuevo evento">
+                    <button class="btn btn-sidebar" id="btnAgregarEvento">+</button>
+                </div>
+            </div>
+            <div class="card p-3 shadow-sm">
+                <h6 class="mb-3">Escoje el nombre de tu sorteo</h6>
+                <div class="d-flex">
+                    <input type="text" id="NombreSorteo" class="form-control me-2" placeholder="Nombre del sorteo">
+                    <button class="btn btn-sidebar" id="btnNombreSorteo">Aceptar</button>
+                </div>
+            </div>
+            <div class="card p-3 shadow-sm">
+                <h6 class="mb-3">¿De a cuanto nos toca?</h6>
+                <ul class="list-group mb-3" id="lista-presupuesto">
+                    <li class="list-group-item list-group-item-action">$200</li>
+                    <li class="list-group-item list-group-item-action">$500</li>
+                    <li class="list-group-item list-group-item-action">$1000</li>
+                </ul>
+
+                <div class="d-flex">
+                    <input type="text" id="nuevo-presupuesto" class="form-control me-2" placeholder="Agregar nuevo presupuesto">
+                    <button class="btn btn-sidebar" id="btnAgregarPresupuesto">+</button>
+                </div>
+            </div>
+            <div class="card p-3 shadow-sm">
+                <h6 class="mb-3">Agendar evento</h6>
+                <input type="text" class="form-control" id="fechaEvento" placeholder="Escoje la fecha">
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#fechaEvento", {
+            dateFormat: "d F, Y",
+            locale: "es",
+            minDate: "today",
+            allowInput: false
+        });
+    </script>
+</body>
+</html>
