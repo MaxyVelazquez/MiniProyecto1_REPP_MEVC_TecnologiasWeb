@@ -21,3 +21,10 @@ map(key,value) donde Key no le puede dar a Value
 key nombre(string)
 
 value vector de nombres
+
+
+---------------------------------------------------
+Estamos trabajando con objetos de json para guardar las cosas en el ls por lo que dejare de lado
+la parte de los maps, esto complicaria todo. solo trabajaremos con arreglos.
+
+Quite la parte de los sorteados en esta parte, eso se calculara una vez que el usuario pretenda iniciar el sorteo
