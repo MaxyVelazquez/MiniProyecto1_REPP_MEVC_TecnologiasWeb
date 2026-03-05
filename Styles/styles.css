@@ -32,3 +32,19 @@ footer, .offcanvas{
 #iniciar-button, .btn-sortear{
     background-color: rgb(37, 150, 37);
 }
+
+.excepciones-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.excepciones-dropdown.show {
+    display: block;
+}
