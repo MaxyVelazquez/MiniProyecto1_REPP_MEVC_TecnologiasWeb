@@ -7,22 +7,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet"/>
      <link rel="stylesheet" href="/Styles/styles.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ticker">
+        <div class="casino-lights-border">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
         <div class="container">
-            <p class="navbar-brand" href="#" id="nameUsuario">Aquí va el nombre del usuario que inicio sesion</p>
+            <p class="navbar-brand p-4" href="#" id="nameUsuario"></p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item" ><a href="#" class="nav-link active" id="btnInicio">Inicio</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link active" id="btnMisSorteos">Mis Sorteos</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link active" id="btnCerrarSesion">Cerrar Sesión</a></li>
-
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item" ><a href="#" class="nav-link active navbar-opciones" id="btnInicio">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active navbar-opciones" id="btnMisSorteos">Mis Sorteos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active navbar-opciones" id="btnCerrarSesion">Cerrar Sesión</a></li>
                     
                 </ul>
             </div>
@@ -33,37 +47,52 @@
     <section class="sorteos py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <!-- Para generar el template en js debes quitar desde aqui -->
-                        <div class="card">
+                    <div class="col-12">
+                        
+                        <div class="card nombreCard">
                             <div class="card-body">
                                 <h5 class="card-title">Todos los sorteos</h5>
-                                <!-- Aquí debes inyectar templates como la que está de ejemplo -->
-                                 <div class="d-flex justify-content-between align-items-center bg-light rounded-3 p-3 mb-2 shadow-sm">
-                                    <span><strong>ejemplo</strong></span>
-                                    <div>
-                                        <button class="btn btn-sm btn-sortear me-1"id="Sorteo">Sortear</button>
-                                    </div>
-                                </div>
-                                <!-- Esto lo quitas y lo generas con js -->
+                                <div id="allSorteos"></div>
+                               
                             </div>
                             
                         </div>
                         
                      </div>
-                     <div class="col-md-6 col-sm-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Resultados</h5>
-                                    <p class="card-text" id="resultados">Aqui colocas los resultados del sorteo</p><!-- eso lo quitas-->
-                                    <!-- has un sleep con una animación de carga para que de la impresión de que piensa un poco -->
-                                </div>
-                            </div>
-                        </div>
+                    
+                </div>
+           </div>
+       </section>
+
+       <footer class=" text-white py-4 mt-auto">
+            <div class="container-fluid text-center">
+                <p class="mb-1 fw-semibold">
+                    Creadores: Rey Emmanuel Picazo Perez & Maxy Emiliano Velazquez Cuellar
+                </p>
+                <p class="mb-0 small">
+                    MiniProyecto1.
+                </p>
+            </div>
+        </footer>
+
+       <div class="modal fade" id="modalResultados" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-resultado-nombre"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3" id="resultado-cards"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCerarSorteosListo">Cerrar</button>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/sortear.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

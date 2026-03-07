@@ -8,21 +8,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet"/>
      <link rel="stylesheet" href="/Styles/styles.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ticker">
+        <div class="casino-lights-border">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
         <div class="container">
-            <p class="navbar-brand" href="#" id="nameUsuario">Aquí va el nombre del usuario que inicio sesion</p>
+            <p class="navbar-brand p-4" href="#" id="nameUsuario"></p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item" ><a href="#" class="nav-link active" id="btnInicio">Inicio</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link active" id="btnMisSorteos">Mis Sorteos</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link active" id="btnCerrarSesion">Cerrar Sesión</a></li>
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item" ><a href="#" class="nav-link active navbar-opciones" id="btnInicio">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active navbar-opciones" id="btnMisSorteos">Mis Sorteos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active navbar-opciones" id="btnCerrarSesion">Cerrar Sesión</a></li>
                     
                 </ul>
             </div>
@@ -30,15 +45,15 @@
         </div>
     </nav>
 
-    
+     
     <section class="Participantes py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row align-items-stretch">
+                <div class="col-md-6">
                     <div class="participantes">
                         <div class="participantes-body ">
-                            <h5 class="participantes-title ">Participantes</h5>
-                            <div class="participantes-lista card p-5 position-relative" id="participantes-lista">
+                            <h5 class="participantes-title card-title ">Participantes</h5>
+                            <div class="participantes-lista card nombreCard p-5 position-relative" id="participantes-lista">
                                 <div class="position-absolute top-0 end-0 m-2"
                                     data-bs-toggle="offcanvas"
                                     data-bs-target="#sidebarCondiguracion"
@@ -46,18 +61,18 @@
                                     
                                     <i class="bi bi-gear-fill text-dark"></i>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center bg-light rounded-3 p-3 mb-2 shadow-sm" draggable="true">
-                                    <span><strong>Organizador</strong></span>
-                                    <div>
-                                        <button class="btn btn-sm btn-light me-1">...</button><!-- Este boton despliega un canvas 
-                                                                                                    individual de cada participante 
-                                                                                                    en el que puedes arrastrar nombres para 
-                                                                                                    indicar que esos seran las excepciones -->
-                                        <button class="btn btn-sm btn-eliminar">x</button>
+                                <div id="participantesSorteo">
+                                    <div class="form-check p-3 formCrear rounded-3 shadow-sm">
+                                        <input class="form-check-input " type="checkbox" id="checkOrganizador">
+                                        <label class="form-check-label  fw" for="checkOrganizador">
+                                            Incluir organizador en el sorteo
+                                        </label>
                                     </div>
+
                                 </div>
+                                
                                 <div class="d-flex mt-3">
-                                    <input type="text" id="input-nombre"class="form-control me-2" placeholder="Nombre del participante">
+                                    <input type="text" id="input-nombre"class="form-control form-nombre-nuevo me-2 form-check-label" placeholder="Nombre del participante">
                                     <button class="btn" id="btnAgregar">+</button>
 
                                 </div>
@@ -70,12 +85,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-5 col-sm-12 mt-3">
                     <div class="card">
-                        <canvas class="exepciones" id="excepciones">
-                            <!-- Aqui se podrán arrastrar los usuarios que serán las excepciones -->
-                             <!-- Encargate de hacer que este canva no sea visible hasta que se presionan los 3 puntitos de alguno de los participantes -->
-                        </canvas>
+                        <div id="eliminarUsuario" class="d-flex flex-column justify-content-center align-items-center p-4 rounded-3 border border-2 border-dashed text-muted bg-transparent" style="min-height: 150px; border-style: dashed !important;">
+                            <span style="font-size: 2rem;">🗑️</span>
+                            <p class="mt-2 mb-0 fw-semibold">Arrastra aquí para eliminar</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,47 +114,52 @@
                 </ul>
 
                 <div class="d-flex">
-                    <input type="text" id="nuevo-evento" class="form-control me-2" placeholder="Agregar nuevo evento">
+                    <input type="text" id="nuevo-evento" class="form-control form-nombre-nuevo me-2" placeholder="Agregar nuevo evento">
                     <button class="btn btn-sidebar" id="btnAgregarEvento">+</button>
                 </div>
             </div>
             <div class="card p-3 shadow-sm">
                 <h6 class="mb-3">Escoje el nombre de tu sorteo</h6>
                 <div class="d-flex">
-                    <input type="text" id="NombreSorteo" class="form-control me-2" placeholder="Nombre del sorteo">
+                    <input type="text" id="NombreSorteo" class="form-control form-nombre-nuevo me-2" placeholder="Nombre del sorteo">
                     <button class="btn btn-sidebar" id="btnNombreSorteo">Aceptar</button>
                 </div>
             </div>
             <div class="card p-3 shadow-sm">
-                <h6 class="mb-3">¿De a cuanto nos toca?</h6>
+                <h6 class="mb-3">¿De a cuanto $ nos toca?</h6>
                 <ul class="list-group mb-3" id="lista-presupuesto">
-                    <li class="list-group-item list-group-item-action">$200</li>
-                    <li class="list-group-item list-group-item-action">$500</li>
-                    <li class="list-group-item list-group-item-action">$1000</li>
+                    <li class="list-group-item list-group-item-action">200</li>
+                    <li class="list-group-item list-group-item-action">500</li>
+                    <li class="list-group-item list-group-item-action">1000</li>
                 </ul>
 
                 <div class="d-flex">
-                    <input type="text" id="nuevo-presupuesto" class="form-control me-2" placeholder="Agregar nuevo presupuesto">
+                    <input type="text" id="nuevo-presupuesto" class="form-control form-nombre-nuevo me-2" placeholder="Agregar nuevo presupuesto">
                     <button class="btn btn-sidebar" id="btnAgregarPresupuesto">+</button>
                 </div>
             </div>
             <div class="card p-3 shadow-sm">
                 <h6 class="mb-3">Agendar evento</h6>
-                <input type="text" class="form-control" id="fechaEvento" placeholder="Escoje la fecha">
+                <input type="text" class="form-control form-nombre-nuevo" id="fechaEvento" placeholder="Escoje la fecha">
             </div>
         </div>
     </div>
+
+    <footer class=" text-white py-4 mt-auto">
+        <div class="container-fluid text-center">
+            <p class="mb-1 fw-semibold">
+                Creadores: Rey Emmanuel Picazo Perez & Maxy Emiliano Velazquez Cuellar
+            </p>
+            <p class="mb-0 small">
+                MiniProyecto1.
+            </p>
+        </div>
+    </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr("#fechaEvento", {
-            dateFormat: "d F, Y",
-            locale: "es",
-            minDate: "today",
-            allowInput: false
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="../JS/crear.js"></script>
 </body>
 </html>
