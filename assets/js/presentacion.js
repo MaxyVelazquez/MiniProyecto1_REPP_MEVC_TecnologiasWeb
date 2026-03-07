@@ -9,5 +9,5 @@ document.getElementById("formularioNombre").addEventListener("submit", function(
 
     //VAMOS A LA PABTALLA DE INICIO
     localStorage.setItem("usuario", document.getElementById("nombre").value);
-    window.location.href = "../Publi/inicio.html";
+    window.location.href = "../pages/inicio.html";
 });
