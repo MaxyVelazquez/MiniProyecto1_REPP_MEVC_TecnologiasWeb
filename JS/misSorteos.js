@@ -20,25 +20,33 @@ const contenedor = document.getElementById("cardsSorteos");
 
 sorteos.forEach((sorteo, index) => {
     const card = `
-        <div class="col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${sorteo.nombre}</h5>
-                    <p class="card-text">${sorteo.fecha}</p>
-                    <p class="card-text">$${sorteo.presupuesto}</p>
-                    <p class="card-text">${sorteo.participantes.length} participantes</p>
-                </div>
-                <div class="opciones text-center m-2">
-                    <button class="btn btn-card btn-detalles" data-index="${index}">Detalles</button>
-                    <button class="btn btn-danger btn-eliminar-sorteo" data-index="${index}">Eliminar</button>
-                </div>
+    <div class="col-md-3 col-sm-6 col-12 mb-3" data-card-index="${index}">
+        <div style="background: #000; border: 1px solid rgba(255,215,0,0.3); border-left: 3px solid var(--neon-gold); border-radius: 0.5rem; box-shadow: 0 0 15px rgba(255,215,0,0.15);">
+            <div class="p-3">
+                <h5 style="font-family: 'Black Ops One', cursive; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); letter-spacing: .1em;">
+                    ${sorteo.nombre}
+                </h5>
+                <p style="color: var(--neon-gold); text-shadow: 0 0 6px var(--neon-gold); margin-bottom: .3rem;">
+                    📅 ${sorteo.fecha}
+                </p>
+                <p style="color: var(--neon-gold); text-shadow: 0 0 6px var(--neon-gold); margin-bottom: .3rem;">
+                    💰 $${sorteo.presupuesto}
+                </p>
+                <p style="color: var(--neon-pink); text-shadow: 0 0 6px var(--neon-pink); margin-bottom: 0;">
+                    👥 ${sorteo.participantes.length} participantes
+                </p>
             </div>
-        </div>`;
+            <div style="border-top: 1px solid rgba(255,215,0,0.2);" class="text-center p-2 d-flex gap-2 justify-content-center">
+                <button class="btn btn-card btnDetalles" data-index="${index}">Detalles</button>
+                <button class="btn btn-eliminar-sorteo" data-index="${index}">Eliminar</button>
+            </div>
+        </div>
+    </div>`;
     contenedor.insertAdjacentHTML('beforeend', card);
 });
 
 document.getElementById('cardsSorteos').addEventListener('click', function(e) {
-    const btnDetalles = e.target.closest('.btn-detalles');
+    const btnDetalles = e.target.closest('.btnDetalles');
     if (btnDetalles) {
         const index = btnDetalles.dataset.index;
         const sorteo = sorteos[index];

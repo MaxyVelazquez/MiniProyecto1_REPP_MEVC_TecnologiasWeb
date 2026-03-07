@@ -14,12 +14,17 @@ const contenedor = document.getElementById("allSorteos");
 
 sorteos.forEach((sorteo, index) => {
     const card = `
-        <div class="d-flex justify-content-between align-items-center bg-light rounded-3 p-3 mb-2 shadow-sm" data-card-index="${index}">
-            <p>${sorteo.nombre}</p>
-            <div>
-                <button class="btn btn-sm btn-sortear me-1" data-index="${index}">Sortear</button>
-            </div>
-        </div>`;
+    <div class="d-flex justify-content-between align-items-center p-3 mb-2 rounded-3" 
+        data-card-index="${index}"
+        style="background: #000; border: 1px solid rgba(255,215,0,0.3); border-left: 3px solid var(--neon-gold); box-shadow: 0 0 10px rgba(255,215,0,0.1);">
+        <p style="color: var(--neon-gold); text-shadow: 0 0 6px var(--neon-gold); margin: 0; letter-spacing: .1em;">
+            ${sorteo.nombre}
+        </p>
+        <button class="btn btn-sortear btn-sm me-1" data-index="${index}"
+            style="background: transparent; border: 2px solid var(--neon-cyan); color: var(--neon-cyan); font-family: 'Black Ops One', cursive; text-shadow: 0 0 8px var(--neon-cyan); letter-spacing: .1em;">
+            Sortear
+        </button>
+    </div>`;
     contenedor.insertAdjacentHTML('beforeend', card);
 });
 
@@ -63,21 +68,27 @@ document.getElementById('allSorteos').addEventListener('click', function(e) {
     const resultado = sortear(sorteo);
 
     if (!resultado) {
-        alert("Algo salio mal, crea un nuevo sorteo");
+        Swal.fire({
+            title: '¡Algo salió mal!',
+            text: 'Algo salio mal, crea un nuevo sorteo',
+            confirmButtonText: 'Aceptar',
+            background: '#000',
+            color: '#ffd700',
+            confirmButtonColor: 'transparent',
+            customClass: {
+                confirmButton: 'btn-swal-confirm',
+                popup: 'popup-swal'
+            }
+        });
         return;
     }
 
     sorteos[index].resultado = resultado;
     localStorage.setItem("sorteos", JSON.stringify(sorteos));
 
-    const overlay = document.getElementById('ruletaSortech');
 
-    overlay.classList.remove('d-none');
+    mostrarResultados(sorteos[index]);
 
-    setTimeout(() => {
-        overlay.classList.add('d-none');
-        mostrarResultados(sorteos[index]);
-    }, 5000); 
     
     sorteos.splice(index, 1);
     localStorage.setItem("sorteos", JSON.stringify(sorteos));
@@ -86,26 +97,30 @@ document.getElementById('allSorteos').addEventListener('click', function(e) {
 
     document.querySelectorAll('[data-card-index]').forEach((card, i) => {
         card.dataset.cardIndex = i;
-    card.querySelector('.btn-sortear').dataset.index = i;
-});
+        card.querySelector('.btn-sortear').dataset.index = i;
+    });
 
 });
 
 
 function mostrarResultados(sorteo) {
-    document.getElementById('modal-resultado-nombre').textContent = sorteo.nombre;
-
     const contenedor = document.getElementById('resultado-cards');
     contenedor.innerHTML = '';
 
     Object.entries(sorteo.resultado).forEach(([dador, receptor]) => {
         const card = `
             <div class="col-md-6 col-sm-12">
-                <div class="card text-center p-3 shadow-sm">
-                    <p class="fw-semibold mb-1">${dador}</p>
-                    <p class="display-6">🎁</p>
-                    <p class="text-muted mb-0">le toca regalarle a</p>
-                    <h5 class="mt-1 fw-bold">${receptor}</h5>
+                <div class="text-center p-3 rounded-3" style="background: #000; border: 1px solid rgba(255,215,0,0.3); border-left: 3px solid var(--neon-red); box-shadow: 0 0 15px rgba(255,45,85,0.15);">
+                    <p style="font-family: 'Black Ops One', cursive; color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); letter-spacing: .1em; margin-bottom: .3rem;">
+                        ${dador}
+                    </p>
+                    <p style="font-size: 2rem; margin: .3rem 0;">🎁</p>
+                    <p style="color: rgba(255,215,0,0.6); font-size: .75rem; margin-bottom: .3rem; letter-spacing: .15em;">
+                        le toca regalarle a
+                    </p>
+                    <h5 style="font-family: 'Black Ops One', cursive; color: var(--neon-gold); text-shadow: 0 0 12px var(--neon-gold); letter-spacing: .1em;">
+                        ${receptor}
+                    </h5>
                 </div>
             </div>`;
         contenedor.insertAdjacentHTML('beforeend', card);
