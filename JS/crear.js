@@ -27,11 +27,11 @@ document.getElementById("btnAgregar").addEventListener("click", function(e) {
     //tarjeta esta agregando el nombre del participante
  
     const tarjeta = `
-        <div class="d-flex justify-content-between align-items-center bg-light rounded-3 p-3 mb-2 shadow-sm" draggable="true" data-nombre="${nombreAux}">
+        <div class="nombreCard border-warning d-flex justify-content-between align-items-center rounded-3 p-3 mb-2 shadow-sm " draggable="true" data-nombre="${nombreAux}" >
             <p>${nombreAux}</p>
             <div style="position: relative;">
-                <button class="btn btn-sm btn-light me-1 btn-excepciones" data-nombre="${nombreAux}">...</button>
-                <div class="excepciones-dropdown" id="dropdown-${nombreAux}">
+                <button class="btn btn-sm me-1 btn-excepciones" data-nombre="${nombreAux}" >...</button>
+                <div class="cardNombre excepciones-dropdown" id="dropdown-${nombreAux}">
                     <p class="fw-semibold mb-2">Excepciones</p>
                     <div class="excepciones-lista"></div>
                 </div>
@@ -58,6 +58,7 @@ document.getElementById("btnAgregarEvento").addEventListener("click", function(e
     const tarjetaEvento = `
         <li class="list-group-item list-group-item-action active">${nombreEventoAux}</li>`;
 
+    nameEvento = nombreEventoAux;
     document.getElementById('lista-eventos').insertAdjacentHTML('beforeend', tarjetaEvento);
     document.getElementById('nuevo-evento').value = '';
 
@@ -98,6 +99,7 @@ document.getElementById("btnAgregarPresupuesto").addEventListener("click", funct
     
     const tarjetaEvento = `
         <li class="list-group-item list-group-item-action active" >${presupuestoAux}</li>`;
+    presupuesto = presupuestoAux;
     document.getElementById('lista-presupuesto').insertAdjacentHTML('beforeend', tarjetaEvento);
     document.getElementById('nuevo-presupuesto').value = '';
 
@@ -133,27 +135,82 @@ document.getElementById("btnGenerarSorteo").addEventListener("click", function(e
     e.preventDefault();
 
     if(!nameEvento){
-        alert("No has seleccionado un evento para el sorteo");
+        Swal.fire({
+            title: '¡Algo salió mal!',
+            text: 'No has seleccionado un evento para el sorteo',
+            confirmButtonText: 'Aceptar',
+            background: '#000',
+            color: '#ffd700',
+            confirmButtonColor: 'transparent',
+            customClass: {
+                confirmButton: 'btn-swal-confirm',
+                popup: 'popup-swal'
+            }
+        });
         return;
     }
 
     if(!nombreSorteo){
-        alert("No has seleccionado un nombre para el sorteo");
+        Swal.fire({
+            title: '¡Algo salió mal!',
+            text: 'No has seleccionado un nombre para el sorteo',
+            confirmButtonText: 'Aceptar',
+            background: '#000',
+            color: '#ffd700',
+            confirmButtonColor: 'transparent',
+            customClass: {
+                confirmButton: 'btn-swal-confirm',
+                popup: 'popup-swal'
+            }
+        });
         return;
     }
 
     if(!presupuesto){
-        alert("No has seleccionado un presupuesto para el sorteo");
+        Swal.fire({
+            title: '¡Algo salió mal!',
+            text: 'No has seleccionado un presupuesto para el sorteo',
+            confirmButtonText: 'Aceptar',
+            background: '#000',
+            color: '#ffd700',
+            confirmButtonColor: 'transparent',
+            customClass: {
+                confirmButton: 'btn-swal-confirm',
+                popup: 'popup-swal'
+            }
+        });
         return;
     }
 
     if(participantes.length === 0){
-        alert("No has seleccionado participantes para el sorteo");
+        Swal.fire({
+            title: '¡Algo salió mal!',
+            text: 'No has seleccionado participantes para el sorteo',
+            confirmButtonText: 'Aceptar',
+            background: '#000',
+            color: '#ffd700',
+            confirmButtonColor: 'transparent',
+            customClass: {
+                confirmButton: 'btn-swal-confirm',
+                popup: 'popup-swal'
+            }
+        });
         return;
     }
 
     if(!fechaSorteo){
-        alert("No has seleccionado una fecha para el sorteo");
+        Swal.fire({
+            title: '¡Algo salió mal!',
+            text: 'No has seleccionado una fecha para el sorteo',
+            confirmButtonText: 'Aceptar',
+            background: '#000',
+            color: '#ffd700',
+            confirmButtonColor: 'transparent',
+            customClass: {
+                confirmButton: 'btn-swal-confirm',
+                popup: 'popup-swal'
+            }
+        });
         return;
     }
 
@@ -173,8 +230,21 @@ document.getElementById("btnGenerarSorteo").addEventListener("click", function(e
     sorteosGuardados.push(sorteo);
     localStorage.setItem("sorteos", JSON.stringify(sorteosGuardados));
 
-    alert("Has generado un nuevo sorteo");
-    window.location.href = "../Publi/inicio.html";
+    Swal.fire({
+        title: '¡Sorteo Creado!',
+        text: 'Has creado un nuevo sorteo',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        background: '#000',
+        color: '#ffd700',
+        iconColor: '#39ff14',
+        customClass: {
+            confirmButton: 'btn-swal-confirm',
+            popup: 'popup-swal'
+        }
+    }).then(() => {
+        window.location.href = "../Publi/inicio.html";
+    });
 });
 
 
@@ -194,6 +264,7 @@ document.getElementById('participantesSorteo').addEventListener('dragstart', fun
 document.getElementById('participantesSorteo').addEventListener('dragend', function(e) {
     const tarjeta = e.target.closest('[data-nombre]');
     if (tarjeta) tarjeta.classList.remove('opacity-50');
+    zonaEliminar.classList.remove('border-danger', 'text-danger', 'bg-danger-subtle');
 });
 
 const zonaEliminar = document.getElementById('eliminarUsuario');

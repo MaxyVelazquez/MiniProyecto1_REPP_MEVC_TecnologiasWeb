@@ -233,7 +233,7 @@ footer, .offcanvas{
     background: #000 !important;
 }
 
- .btn-sidebar, .btn-card{
+ .btn-card{
     background-color: #ecce6a;
     color:black;
 }
@@ -280,22 +280,6 @@ footer, .offcanvas{
     cursor: pointer;
 }
 
-
-.excepciones-dropdown {
-    display: none;
-    position: absolute;
-    z-index: 1000;
-    background: white;
-    border: 1px solid #dee2e6;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.excepciones-dropdown.show {
-    display: block;
-}
 
 
 /* Casino */
@@ -408,3 +392,219 @@ footer, .offcanvas{
 .lights-top-only .dot:nth-child(10) { left: calc(10 * 7%); }
 .lights-top-only .dot:nth-child(11) { left: calc(11 * 7%); }
 .lights-top-only .dot:nth-child(12) { left: calc(12 * 7%); }
+
+.form-check-input[type="checkbox"]:hover {
+    box-shadow: 0 0 12px #ffcc00, 0 0 20px rgba(255, 204, 0, 0.4);
+    border-color: #fff !important;
+    cursor: pointer;
+}
+
+.form-check-label:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--neon-gold);
+    cursor: pointer;
+}
+
+.excepciones-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background: #000;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-left: 3px solid var(--neon-gold);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-width: 200px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), -4px 0 15px rgba(255, 45, 85, 0.15);
+}
+
+.excepciones-dropdown.show {
+    display: block;
+}
+
+.excepciones-dropdown p {
+    font-family: 'Bebas Neue', cursive;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+    letter-spacing: .2em;
+}
+
+.excepciones-dropdown .form-check-label {
+    color: var(--neon-gold);
+    letter-spacing: .1em;
+    font-size: .85rem;
+}
+
+.excepciones-dropdown .form-check-label:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--neon-gold);
+    cursor: pointer;
+}
+
+
+#participantesSorteo .d-flex.justify-content-between {
+    background: #000 ;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-left: 3px solid var(--neon-gold);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+    color: var(--neon-gold);
+}
+
+#participantesSorteo p {
+    color: var(--neon-gold);
+    text-shadow: 0 0 6px var(--neon-gold);
+    margin: 0;
+    letter-spacing: .1em;
+}
+
+#participantesSorteo .btn-light {
+    background: transparent ;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    color: var(--neon-gold);
+    font-size: .75rem;
+}
+
+#participantesSorteo .btn-light:hover, .btn-sidebar:hover {
+    background: rgba(255, 215, 0, 0.1) ;
+    box-shadow: 0 0 8px var(--neon-gold);
+}
+
+#participantesSorteo .excepciones-dropdown p {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.form-check.formCrear {
+    background: #000 ;
+}
+
+#participantesSorteo .btn-excepciones {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 6px var(--neon-cyan);
+}
+
+#participantesSorteo .btn-excepciones:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--neon-cyan);
+    box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+#btnAgregar, #btnGenerarSorteo{
+    background: #000;
+}
+
+#input-nombre, #nuevo-evento, #NombreSorteo, #nuevo-presupuesto, #fechaEvento{
+    background: #000 ;
+    color: var(--neon-gold) ;
+    box-shadow: 0 0 8px var(--neon-gold), inset 0 0 8px rgba(255, 217, 0, 0.1)
+}
+
+#input-nombre::placeholder, #nuevo-evento::placeholder, #NombreSorteo::placeholder, #nuevo-presupuesto::placeholder, #fechaEvento::placeholder {
+    color: rgba(255, 217, 0, 0.89) ;
+}
+
+
+#input-nombre:focus, #nuevo-evento:focus, #NombreSorteo:focus, #nuevo-presupuesto:focus, #fechaEvento:focus {
+    border-color: var(--neon-gold) !important;
+}
+
+.btn-sidebar{
+    background: #000;
+    color: var(--neon-gold);
+    border: 2px solid var(--neon-gold);
+}
+
+/* Modal que muestra los detalles de los sorteos*/
+.modal-content {
+    background: #000;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-left: 3px solid var(--neon-gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.modal-title {
+    font-family: 'Black Ops One', cursive;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.modal-body p, .modal-body li {
+    color: var(--neon-gold);
+    text-shadow: 0 0 4px var(--neon-gold);
+}
+
+.modal-body strong {
+    color: var(--neon-pink);
+    text-shadow: 0 0 6px var(--neon-pink);
+}
+
+
+.btn-eliminar-sorteo {
+    background: transparent;
+    border: 2px solid var(--neon-red);
+    color: var(--neon-red);
+    font-family: 'Black Ops One', cursive;
+    text-shadow: 0 0 8px var(--neon-red);
+    box-shadow: 0 0 10px rgba(255, 45, 85, 0.2);
+    letter-spacing: .1em;
+    transition: all .15s;
+}
+
+.btn-eliminar-sorteo:hover {
+    background: rgba(255, 45, 85, 0.07);
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.5);
+}
+
+.btnDetalles, #btnCrearNuevoSorteo, #btnCerrarModal, #btnCerarSorteosListo {
+    background: #000;
+    border: 2px solid var(--neon-gold);
+    color: var(--neon-gold);
+    font-family: 'Black Ops One', cursive;
+    text-shadow: 0 0 8px var(--neon-gold);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    letter-spacing: .1em;
+    transition: all .15s;
+}
+
+.btnDetalles:hover, #btnCrearNuevoSorteo:hover, #btnCerrarModal:hover, #btnCerarSorteosListo:hover {
+    background: rgb(0, 0, 0);
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.btn-sortear:hover {
+    background: rgba(0, 245, 255, 0.07) ;
+    color: #fff ;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.4) ;
+}
+
+
+/* Diseño para todos los alerts*/
+
+.btn-swal-confirm {
+    border: 2px solid var(--neon-cyan) ;
+    color: var(--neon-cyan) ;
+    font-family: 'Black Ops One', cursive ;
+    text-shadow: 0 0 8px var(--neon-cyan) ;
+    box-shadow: 0 0 10px rgba(0,245,255,0.2) ;
+    letter-spacing: .1em ;
+}
+
+.popup-swal {
+    border: 1px solid rgba(255,215,0,0.3) ;
+    border-left: 3px solid var(--neon-gold) ;
+    box-shadow: 0 0 30px rgba(255,215,0,0.2) ;
+}

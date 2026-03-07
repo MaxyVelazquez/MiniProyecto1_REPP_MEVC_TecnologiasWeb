@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet"/>
      <link rel="stylesheet" href="/Styles/styles.css">
-</head>
+</head> 
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark ticker">
         <div class="casino-lights-border">
@@ -45,16 +45,27 @@
     </nav>
 
     <section class="sorteos py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                    <div id="cardsSorteos"></div>
-                        
-                    </div>
-                    <button class="btn btn-card m-2" id="btnCrearNuevoSorteo">+</button><!-- LLeva a crear un sorteo desde 0 -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                <div id="cardsSorteos" class="row"></div>
+                    
                 </div>
+                <button class="btn btn-card m-2" id="btnCrearNuevoSorteo">+</button><!-- LLeva a crear un sorteo desde 0 -->
             </div>
-        </section>
+        </div>
+    </section>
+
+    <footer class=" text-white py-4 mt-auto">
+        <div class="container-fluid text-center">
+            <p class="mb-1 fw-semibold">
+                Creadores: Rey Emmanuel Picazo Perez & Maxy Emiliano Velazquez Cuellar
+            </p>
+            <p class="mb-0 small">
+                MiniProyecto1.
+            </p>
+        </div>
+    </footer>
 
         <div class="modal fade" id="modalDetalles" tabindex="-1">
             <div class="modal-dialog">
@@ -72,7 +83,7 @@
                         <ul id="modal-participantes"></ul>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCerrarModal">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -80,5 +91,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/misSorteos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
